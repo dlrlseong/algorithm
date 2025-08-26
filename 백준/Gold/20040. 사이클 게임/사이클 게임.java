@@ -41,11 +41,11 @@ public class Main {
 
 		for (int i = 1; i <= M; i++) {
 			st = new StringTokenizer(br.readLine(), " ");
-			int from = Integer.parseInt(st.nextToken());
-			int to = Integer.parseInt(st.nextToken());
-
 			if (isOver)
 				continue;
+
+			int from = Integer.parseInt(st.nextToken());
+			int to = Integer.parseInt(st.nextToken());
 
 			if (!union(from, to)) {
 				isOver = true;
