@@ -43,12 +43,12 @@ public class Solution {
 	private static void dfs(int i, int j, int d) {
 		if (i < 0 || j < 0 || i >= N || j >= N)
 			return;
+		if (i < start[0])
+			return;
 		if (i == start[0] && j == start[1] && d == 3) {
 			MAX = Math.max(MAX, cnt);
 			return;
 		}
-        if (i < start[0])
-			return;
 		if (isDone[Map[i][j]] || vis[i][j])
 			return;
 		isDone[Map[i][j]] = true;
