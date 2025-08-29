@@ -1,6 +1,9 @@
 import java.io.*;
 import java.util.*;
 
+// 메모리 27,776 kb 실행시간 93 ms
+
+
 public class Solution {
 
 	static int N, K;
@@ -10,20 +13,16 @@ public class Solution {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		StringBuilder sb = new StringBuilder();
-
 		int T = Integer.parseInt(st.nextToken());
 		for (int tc = 1; tc <= T; tc++) {
 			st = new StringTokenizer(br.readLine(), " ");
 			N = Integer.parseInt(st.nextToken());
 			K = Integer.parseInt(st.nextToken());
-
 			List<Character> list = new ArrayList<>();
 			HashSet<Integer> set = new HashSet<>();
-
 			st = new StringTokenizer(br.readLine(), " ");
 			String str = st.nextToken();
 			String tmpStr = "";
-
 			for (int i = 0; i < N; i++) {
 				char tmp = str.charAt(i);
 				list.add(tmp);
@@ -33,7 +32,6 @@ public class Solution {
 					tmpStr = "";
 				}
 			}
-
 			for (int i = 0; i < (N / 4) - 1; i++) {
 				char tmp = list.remove(list.size() - 1);
 				list.add(0, tmp);
@@ -45,15 +43,10 @@ public class Solution {
 					}
 				}
 			}
-			List<Integer> answers = new ArrayList<>();
-			for (Integer integer : set) {
-				answers.add(integer);
-			}
-
-			Collections.sort(answers, Comparator.reverseOrder());
+			List<Integer> answers = new ArrayList<>(set);
+			Collections.sort(answers, Collections.reverseOrder());
 			sb.append("#").append(tc).append(" ").append(answers.get(K - 1)).append("\n");
 		}
 		System.out.println(sb);
 	}
-
 }
