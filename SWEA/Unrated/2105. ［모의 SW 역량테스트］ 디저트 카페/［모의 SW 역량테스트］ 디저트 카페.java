@@ -26,20 +26,13 @@ public class Solution {
 				}
 			}
 			MAX = -1;
-			for (int i = 0; i < N; i++) {
-				for (int j = 0; j < N; j++) {
-					if (i == 0 && (j == 0 || j == N - 1))
-						continue;
-					if (i == N - 1 && (j == 0 || j == N - 1))
-						continue;
+			for (int i = 0; i < N - 2; i++) {
+				for (int j = 1; j < N - 1; j++) {
 					start = new int[] { i, j };
 					isDone = new boolean[100 + 1];
 					vis = new boolean[N][N];
 					cnt = 0;
-//					System.out.println();
-//					System.out.println(i + " " + j + " " + Map[i][j] + " " + cnt);
 					dfs(i, j, 0);
-
 				}
 			}
 			sb.append("#").append(tc).append(" ").append(MAX).append("\n");
@@ -50,19 +43,17 @@ public class Solution {
 	private static void dfs(int i, int j, int d) {
 		if (i < 0 || j < 0 || i >= N || j >= N)
 			return;
-		if (i < start[0])
-			return;
 		if (i == start[0] && j == start[1] && d == 3) {
 			MAX = Math.max(MAX, cnt);
 			return;
 		}
+        if (i < start[0])
+			return;
 		if (isDone[Map[i][j]] || vis[i][j])
 			return;
 		isDone[Map[i][j]] = true;
 		vis[i][j] = true;
 		cnt++;
-
-//		System.out.println(i + " " + j + " " + Map[i][j] + " " + cnt);
 		dfs(i + dr[d], j + dc[d], d);
 		dfs(i + dr[(d + 1) % 4], j + dc[(d + 1) % 4], (d + 1) % 4);
 		isDone[Map[i][j]] = false;
