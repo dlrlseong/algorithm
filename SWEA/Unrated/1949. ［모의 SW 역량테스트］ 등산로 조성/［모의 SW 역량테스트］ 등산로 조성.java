@@ -8,23 +8,26 @@ public class Solution {
 	static final int[] dc = { 0, 0, -1, 1 };
 
 	public static void dfs(int r, int c, int depth, boolean isDone) {
-//		System.out.println(Map[r][c] + " " + r + " " + c + " " + depth + " " + isDone);
+
 		if (isDone) { // 공사를 한경우
-			// 내 위치에서 dfs해서 최대 깊이 + depth 반환
-			MaxLength = Math.max(MaxLength, depth);
-			for (int d = 0; d < 4; d++) {
-				int nr = r + dr[d];
-				int nc = c + dc[d];
-				if (nr < 0 || nc < 0 || nr >= N || nc >= N) {
-					continue;
-				}
-				if (Map[nr][nc] < Map[r][c]) {
-					int tmp = Map[r][c];
-					Map[r][c] = 999990;
-					dfs(nr, nc, depth + 1, true);
-					Map[r][c] = tmp;
+			// 내 위치에서 bfs해서 최대 깊이 + depth 반환
+			Queue<int[]> q = new ArrayDeque<>();
+			int maxDepth = -99;
+			q.offer(new int[] { r, c, depth });
+			while (!q.isEmpty()) {
+				int cur[] = q.poll();
+				maxDepth = cur[2];
+				for (int d = 0; d < 4; d++) {
+					int nr = cur[0] + dr[d];
+					int nc = cur[1] + dc[d];
+					if (nr < 0 || nc < 0 || nr >= N || nc >= N)
+						continue;
+					if (Map[nr][nc] >= Map[cur[0]][cur[1]])
+						continue;
+					q.offer(new int[] { nr, nc, maxDepth + 1 });
 				}
 			}
+			MaxLength = Math.max(MaxLength, maxDepth);
 			return;
 		}
 
@@ -78,7 +81,6 @@ public class Solution {
 					maxHeight = Math.max(maxHeight, Map[i][j]);
 				}
 			}
-
 			for (int i = 0; i < N; i++) {
 				for (int j = 0; j < N; j++) {
 					if (Map[i][j] == maxHeight) {
