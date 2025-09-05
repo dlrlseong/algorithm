@@ -4,10 +4,8 @@ import java.util.*;
 public class Solution {
 	static int N, K, MaxLength;
 	static int Map[][];
-	static int dp[][][];
 	static final int[] dr = { -1, 1, 0, 0 };
 	static final int[] dc = { 0, 0, -1, 1 };
-	static final int INF = Integer.MAX_VALUE;
 
 	public static void dfs(int r, int c, int depth, boolean isDone) {
 //		System.out.println(Map[r][c] + " " + r + " " + c + " " + depth + " " + isDone);
@@ -78,12 +76,6 @@ public class Solution {
 				for (int j = 0; j < N; j++) {
 					Map[i][j] = Integer.parseInt(st.nextToken());
 					maxHeight = Math.max(maxHeight, Map[i][j]);
-				}
-			}
-			dp = new int[N][N][30];
-			for (int i = 0; i < N; i++) {
-				for (int j = 0; j < N; j++) {
-					Arrays.fill(dp[i][j], INF);
 				}
 			}
 
