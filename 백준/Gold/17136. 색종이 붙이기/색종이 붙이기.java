@@ -52,20 +52,19 @@ public class Main {
 				vis[i][j] = go;
 			}
 		}
-		
+
 //		System.out.println(r + " " + c + " " + size + " " + go + " " + cnt[size]);
 	}
 
 	private static boolean isPossibleSize(int r, int c, int size) {
-		int cntOne = 0;
 		for (int i = r; i < r + size; i++) {
 			for (int j = c; j < c + size; j++) {
 				if (i >= 10 || j >= 10 || vis[i][j])
 					return false;
-				if (arr[i][j] == 1)
-					cntOne++;
+				if (arr[i][j] == 0)
+					return false;
 			}
 		}
-		return cntOne == (size * size);
+		return true;
 	}
 }
