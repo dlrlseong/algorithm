@@ -4,6 +4,7 @@ import java.util.*;
 public class Solution {
 	static int N, M, C;
 	static int[][] Map, sumMap;
+	static int dp[][];
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -17,6 +18,7 @@ public class Solution {
 			M = Integer.parseInt(st.nextToken());
 			C = Integer.parseInt(st.nextToken());
 			Map = new int[N][N];
+			dp = new int[1 + M][1 + C];
 			for (int i = 0; i < N; i++) {
 				st = new StringTokenizer(br.readLine(), " ");
 				for (int j = 0; j < N; j++) {
@@ -50,14 +52,14 @@ public class Solution {
 	}
 
 	private static int knapsack(int[] arr) {
-		int dp[][] = new int[1 + M][1 + C];
 		for (int i = 1; i <= M; i++) {
 			for (int j = 1; j <= C; j++) {
 				int cost = arr[i - 1];
-				
+
 				dp[i][j] = dp[i - 1][j];
-				
-				if(cost <=j) dp[i][j] = Math.max(dp[i][j], cost * cost + dp[i - 1][j - cost]);
+
+				if (cost <= j)
+					dp[i][j] = Math.max(dp[i][j], cost * cost + dp[i - 1][j - cost]);
 			}
 		}
 //		for (int[] a : dp2)
