@@ -13,16 +13,16 @@ public class Main {
 		int r = 31;
 		int mod = 1234567891;
 
-		int hashCode = 0;
+		long hashCode = 0;
 
 		for (int i = 0; i < L; i++) {
-			int num = str.charAt(i) - 'a' + 1;
+			long num = str.charAt(i) - 'a' + 1;
 			for (int j = 0; j < i; j++) {
 				num = (num * r) % mod;
 			}
-			hashCode += num % mod;
+			hashCode = (hashCode + num) % mod;
 		}
-		
+
 		System.out.println(hashCode);
 	}
 }
