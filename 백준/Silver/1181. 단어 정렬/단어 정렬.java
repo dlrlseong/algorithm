@@ -6,6 +6,7 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+		StringBuilder sb = new StringBuilder();
 		Set<String> set = new HashSet<>();
 		int n = Integer.parseInt(st.nextToken());
 		for (int i = 0; i < n; i++) {
@@ -25,8 +26,9 @@ public class Main {
 		});
 		
 		for (String string : list) {
-			System.out.println(string);
+			sb.append(string).append("\n");
 		}
+		System.out.println(sb);
 	}
 
 }
