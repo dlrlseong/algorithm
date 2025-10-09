@@ -18,13 +18,7 @@ public class Main {
 			@Override
 			public int compare(String o1, String o2) {
 				if (o1.length() == o2.length()) {
-					for (int i = 0; i < o1.length(); i++) {
-						char c1 = o1.charAt(i);
-						char c2 = o2.charAt(i);
-						if (c1 == c2)
-							continue;
-						return Integer.compare(c1, c2);
-					}
+					return o1.compareTo(o2);
 				}
 				return Integer.compare(o1.length(), o2.length());
 			}
