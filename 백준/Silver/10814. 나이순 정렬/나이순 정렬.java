@@ -18,6 +18,7 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+		StringBuilder sb = new StringBuilder();
 		int N = Integer.parseInt(st.nextToken());
 
 		List<Node> list = new ArrayList<>();
@@ -39,7 +40,8 @@ public class Main {
 		});
 
 		for (Node node : list) {
-			System.out.println(node.age + " " + node.name);
+			sb.append(node.age).append(" ").append(node.name).append("\n");
 		}
+		System.out.println(sb);
 	}
 }
